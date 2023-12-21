@@ -4,7 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -28,5 +32,17 @@ public class UserModel {
     private String password;
 
     @Column
-    private RoleEnum role;
+    private boolean deleted;
+
+    @CreationTimestamp
+    private Timestamp createdAt;
+
+    @UpdateTimestamp
+    private Timestamp updatedAt;
+
+    @OneToOne
+    private AddressModel address;
+
+    @OneToMany
+    private List<RoleModel> roles;
 }

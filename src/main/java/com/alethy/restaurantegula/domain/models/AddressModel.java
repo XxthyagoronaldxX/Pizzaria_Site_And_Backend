@@ -30,5 +30,5 @@ public class AddressModel {
 
     @OneToOne
     @JsonIgnore
-    private ClientModel clientModel;
+    private UserModel clientModel;
 }

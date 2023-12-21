@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "user")
+@RequestMapping("/user")
 public class UserController {
     private final IUserService userService;
 
@@ -21,8 +21,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userDTO));
     }
 
-    @GetMapping
-    public ResponseEntity<?> findAllEmployees() {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.findAllEmployees());
+    @GetMapping("/{role}")
+    public ResponseEntity<?> findAllEmployees(@PathVariable String role) {
+        System.out.println(role);
+        return ResponseEntity.status(HttpStatus.OK).body("Success");
     }
 }
